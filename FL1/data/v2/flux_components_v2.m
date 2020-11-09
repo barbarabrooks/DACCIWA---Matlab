@@ -13,15 +13,15 @@ fc.WVMMRBar=ones(rr,2).*NaN;%<WVMMR>
 fc.ThetaBar=ones(rr,1).*NaN;%<Theta> sonic temperature corrected for moisture
 
 %primes
-fc.uPrime=ones(rr,xx).*NaN;      %<u> - u
-fc.vPrime=ones(rr,xx).*NaN;      %<v> - v
-fc.wPrime=ones(rr,xx).*NaN;      %<w> - w
-fc.TsPrime=ones(rr,xx).*NaN;     %<Ts> - Ts
-fc.CO2Prime=ones(rr,xx,2).*NaN;  %<CO2> - CO2
-fc.H2OPrime=ones(rr,xx,2).*NaN;  %<H2O> - H2O
-fc.QPrime=ones(rr,xx).*NaN;      %<Q> - Q
-fc.WVMMRPrime=ones(rr,xx,2).*NaN;%<WVMMR> - WVMMR
-fc.ThetaPrime=ones(rr,xx).*NaN;  %<Theta> - Theta
+fc.uPrime=ones(rr,xx).*NaN;      %u - <u>
+fc.vPrime=ones(rr,xx).*NaN;      %v - <v>
+fc.wPrime=ones(rr,xx).*NaN;      %w - <w>
+fc.TsPrime=ones(rr,xx).*NaN;     %Ts - <Ts>
+fc.CO2Prime=ones(rr,xx,2).*NaN;  %CO2 - <CO>
+fc.H2OPrime=ones(rr,xx,2).*NaN;  %H2O - <H2O>
+fc.QPrime=ones(rr,xx).*NaN;      %Q - <Q>
+fc.WVMMRPrime=ones(rr,xx,2).*NaN;%WVMMR - <WVMMR>
+fc.ThetaPrime=ones(rr,xx).*NaN;  %Theta - <Theta>
 
 %crossproducts
 fc.wPrimeuPrime=ones(rr,xx).*NaN;       %w'u'
@@ -82,18 +82,18 @@ for cc=1:rr
     fc.WVMMRBar(cc,:)=mWVMMR;fc.ThetaBar(cc,:)=mtheta;
     
     %primes
-    uprime=mu-u;
-    vprime=mv-v;
-    wprime=mw-w;
-    Tsprime=mTs-Ts;
-    CO2prime1=mCO2(1)-CO2_1;
-    CO2prime2=mCO2(2)-CO2_2;
-    H2Oprime1=mH2O(1)-H2O_1;
-    H2Oprime2=mH2O(2)-H2O_2;
-    Qprime=mQ-Q;
-    WVMMRprime1=mWVMMR(1)-WVMMR_1;
-    WVMMRprime2=mWVMMR(2)-WVMMR_2;
-    thetaprime=mtheta-theta;
+    uprime=u-mu;
+    vprime=v-mv;
+    wprime=w-mw;
+    Tsprime=Ts-mTs;
+    CO2prime1=CO2(1)-mCO2_1;
+    CO2prime2=CO2(2)-mCO2_2;
+    H2Oprime1=H2O(1)-mH2O_1;
+    H2Oprime2=H2O(2)-mH2O_2;
+    Qprime=Q-mQ;
+    WVMMRprime1=WVMMR(1)-mWVMMR_1;
+    WVMMRprime2=WVMMR(2)-mWVMMR_2;
+    thetaprime=theta-mtheta;
     
     fc.uPrime(cc,1:length(uprime))=uprime;
     fc.vPrime(cc,1:length(vprime))=vprime;
